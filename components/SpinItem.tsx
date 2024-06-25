@@ -9,24 +9,17 @@ type SpinItemProps = {
 
 const SpinItem = ({ symbols, index, active, win }: SpinItemProps) => {
   const notActive = !active;
-  const symbolIndexesToShow = [
-    index - 3,
-    index - 2,
-    index - 1,
-    index,
-    index + 1,
-    index + 2,
-    index + 3,
-  ];
+  const newSymbolArray = [...symbols.slice(index), ...symbols.slice(0, index)];
   return (
     <>
       {" "}
       <div className="flex flex-col items-center justify-center bg-white text-7xl  overflow-hidden relative m-3 ">
-        {symbolIndexesToShow.map((symbolIndex, i) => (
+        {newSymbolArray.map((symbol: string, i: number) => (
           <SymbolItem
             key={i}
             i={i}
-            symbol={symbols[symbolIndex]}
+            index={index}
+            symbol={symbol}
             active={!notActive}
             win={win}
           />
