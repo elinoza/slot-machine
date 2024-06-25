@@ -8,7 +8,7 @@ const Slot = () => {
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIndexes = [2, 4, 6];
   const [indexes, setIndexes] = useState(initialIndexes);
-  const [remainingTime, setRemainingTime] = useState([2, 2, 2]);
+  const [remainingTime, setRemainingTime] = useState([2, 4, 6]);
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
   const calcRandomNumber = (min: number, max: number) => {
@@ -110,15 +110,17 @@ const Slot = () => {
         value={spinColumnNumber}
         onChange={(e) => setSpinColumnNumber(e.target.value)}
       />
-      <div className="flex items-center justify-center overflow-hidden m-5 w-[450px] h-[350px] shadow-inner ">
-        {Array.from({ length: spinColumnNumber }, (_, i) => (
-          <SpinItem
-            key={i}
-            symbols={symbols}
-            index={indexes[i]}
-            active={intervalIds[i]}
-          />
-        ))}
+      <div className="bg-stone-300">
+        <div className=" wrapper relative flex items-center justify-center overflow-hidden m-5 w-[450px] h-[350px] p-5 ">
+          {Array.from({ length: spinColumnNumber }, (_, i) => (
+            <SpinItem
+              key={i}
+              symbols={symbols}
+              index={indexes[i]}
+              active={intervalIds[i]}
+            />
+          ))}
+        </div>
       </div>
     </>
   );

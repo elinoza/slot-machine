@@ -11,7 +11,7 @@ const SymbolItem = ({ symbol, i, active }: SymbolItemProps) => {
     <div
       className={clsx(
         i === 3 && "bg-rose-200",
-        " p-5 flex items-center relative w-[150px] h-[150px]   "
+        " p-5 flex items-center justify-center relative w-[150px] h-[150px]   "
       )}
     >
       <div className={clsx(active && "active", "absolute  spin-item")}>

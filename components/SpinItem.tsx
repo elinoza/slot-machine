@@ -23,7 +23,7 @@ const SpinItem = ({ symbols, index, active }: SpinItemProps) => {
   return (
     <>
       {" "}
-      <div className="flex flex-col items-center justify-center text-7xl  bg-white overflow-hidden relative ">
+      <div className="sin-column flex flex-col items-center justify-center bg-white text-7xl  overflow-hidden relative m-3 ">
         {symbolIndexesToShow.map((symbolIndex, i) => (
           <SymbolItem
             key={i}

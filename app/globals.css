@@ -6,10 +6,47 @@
   animation: slidein 0.15s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
+.wrapper {
+  background: linear-gradient(45deg, grey 0%, lightgray 100%);
+
+  border-radius: 30px;
+}
+
 @keyframes slidein {
   from {
   }
   to {
     transform: translateY(300px);
   }
+}
+
+.wrapper::before,
+.wrapper::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 9%;
+  z-index: 10;
+}
+
+.wrapper::before {
+  top: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.wrapper::after {
+  bottom: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.spin-column {
+  border-radius: 30px;
 }
