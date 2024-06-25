@@ -5,7 +5,7 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SLOT MACHINE",
+  title: "Slot Machine",
   description: "Spin for a motivational quote win!",
 };
 
