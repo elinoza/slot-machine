@@ -4,15 +4,19 @@ import SpinItem from "./SpinItem";
 
 const Slot = () => {
   const symbols = ["⭐", "🔔", "🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
-
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIntervalIds = [undefined, undefined, undefined];
   const initialIndexes = [2, 4, 6];
   const [indexes, setIndexes] = useState(initialIndexes);
+  const [winnerIndexes, setWinnerIndexes] = useState<(string | null)[]>([
+    null,
+    null,
+    null,
+  ]);
   const [remainingTime, setRemainingTime] = useState([2, 6, 8]);
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
-
+  const [win, setWin] = useState<boolean>(false);
   const calcRandomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
@@ -37,8 +41,6 @@ const Slot = () => {
       newIds[index] = newIntervalId;
       return newIds;
     });
-
-    console.log("for index:,", index, randomNumber);
   };
 
   const initializeIndex = (index: number) => {
@@ -56,6 +58,13 @@ const Slot = () => {
       return newTimes;
     });
   };
+  const initializeWinnerIndexes = (index: number) => {
+    setWinnerIndexes((prevWinnerIndexes) => {
+      const newWinnerIndex = [...prevWinnerIndexes];
+      newWinnerIndex[index] = null;
+      return newWinnerIndex;
+    });
+  };
 
   const initialiazeIntervalIds = (index: number) => {
     clearInterval(intervalIds[index]);
@@ -66,39 +75,51 @@ const Slot = () => {
     });
   };
 
+  const handleWinnerIndex = (index: number, winnerSymbol: string) => {
+    setWinnerIndexes((prevWinnerSymbols) => {
+      const newWinnerSymbols = [...prevWinnerSymbols];
+      newWinnerSymbols[index] = winnerSymbol;
+      const isAllEqual = newWinnerSymbols.every(
+        (index) => index === newWinnerSymbols[0]
+      );
+
+      if (newWinnerSymbols.every((index) => index) && isAllEqual) {
+        setWin(true);
+      }
+      return newWinnerSymbols;
+    });
+  };
+
+  const handleRemainingTime = (index: number) => {
+    if (remainingTime[index] === 0) {
+      const winnerIndex = indexes[index];
+      const winnerSymbol = symbols[winnerIndex];
+      handleWinnerIndex(index, winnerSymbol);
+      initializeRemainingTime(index);
+      initialiazeIntervalIds(index);
+    }
+  };
+
   useEffect(() => {
-    console.log(remainingTime);
-    if (remainingTime[0] === 0) {
-      initializeRemainingTime(0);
-      initialiazeIntervalIds(0);
-    }
-    if (remainingTime[1] === 0) {
-      initializeRemainingTime(1);
-      initialiazeIntervalIds(1);
-    }
-    if (remainingTime[2] === 0) {
-      initializeRemainingTime(2);
-      initialiazeIntervalIds(2);
-    }
+    Array.from({ length: spinColumnNumber }, (_, i) => handleRemainingTime(i));
   }, [remainingTime]);
 
   useEffect(() => {
-    if (indexes[0] === symbols.length - 1) {
-      initializeIndex(0);
-    }
-    if (indexes[1] === symbols.length - 1) {
-      initializeIndex(1);
-    }
-    if (indexes[2] === symbols.length - 1) {
-      initializeIndex(2);
-    }
+    Array.from({ length: spinColumnNumber }, (_, i) => {
+      if (indexes[i] === symbols.length - 1) {
+        initializeIndex(i);
+      }
+    });
   }, [indexes]);
 
   const handleSpin = () => {
-    initialiazeIntervalIds(0);
-    initialiazeIntervalIds(1);
-    initialiazeIntervalIds(2);
-    Array.from({ length: spinColumnNumber }, (_, i) => spin(i));
+    setWin(false);
+    Array.from({ length: spinColumnNumber }, (_, i) => {
+      initialiazeIntervalIds(i);
+      initialiazeIntervalIds(i);
+      initializeWinnerIndexes(i);
+      spin(i);
+    });
   };
 
   return (
@@ -111,6 +132,7 @@ const Slot = () => {
               symbols={symbols}
               index={indexes[i]}
               active={intervalIds[i]}
+              win={win}
             />
           ))}
         </div>

@@ -4,9 +4,10 @@ type SpinItemProps = {
   symbols: any;
   index: number;
   active: number | NodeJS.Timeout | undefined;
+  win: boolean;
 };
 
-const SpinItem = ({ symbols, index, active }: SpinItemProps) => {
+const SpinItem = ({ symbols, index, active, win }: SpinItemProps) => {
   const notActive = !active;
   const symbolIndexesToShow = [
     index - 3,
@@ -27,6 +28,7 @@ const SpinItem = ({ symbols, index, active }: SpinItemProps) => {
             i={i}
             symbol={symbols[symbolIndex]}
             active={!notActive}
+            win={win}
           />
         ))}
       </div>
