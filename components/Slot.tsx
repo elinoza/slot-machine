@@ -22,7 +22,7 @@ const Slot = () => {
   };
 
   const spin = (index: number) => {
-    const randomNumber = calcRandomNumber(15, 200);
+    // const randomNumber = calcRandomNumber(15, 200);
     const newIntervalId = setInterval(() => {
       setRemainingTime((prevTimes) => {
         const newTimes = [...prevTimes];
@@ -34,7 +34,7 @@ const Slot = () => {
         newIndexes[index] = newIndexes[index] + 1;
         return newIndexes;
       });
-    }, randomNumber);
+    }, 170);
 
     setIntervalIds((prevIds) => {
       const newIds = [...prevIds];
@@ -125,7 +125,7 @@ const Slot = () => {
   return (
     <>
       <div className="bg-stone-300">
-        <div className=" wrapper overflow-hidden relative flex items-center justify-center  m-5 w-[450px] h-[350px] p-5 ">
+        <div className=" wrapper overflow-hidden relative flex items-center justify-center  m-5 w-[450px] h-[350px] p-5  ">
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
               key={i}

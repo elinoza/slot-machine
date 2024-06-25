@@ -16,7 +16,7 @@ const SymbolItem = ({ symbol, i, active, win }: SymbolItemProps) => {
         " p-5 flex items-center justify-center relative w-[150px] h-[150px]   "
       )}
     >
-      <div className={clsx(active && "active", "absolute  spin-item")}>
+      <div className={clsx(active && "active", "absolute z-10 spin-item")}>
         {symbol}
       </div>
     </div>
