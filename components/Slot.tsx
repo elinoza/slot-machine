@@ -6,22 +6,25 @@ const Slot = () => {
   const symbols = ["⭐", "🔔", "🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
   const initialIntervalIds = [undefined, undefined, undefined];
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
-  const [indexes, setIndexes] = useState([2, 4, 6]);
-  const [remainingTime, setRemainingTime] = useState<number>(10);
+  const initialIndexes = [2, 4, 6];
+  const [indexes, setIndexes] = useState(initialIndexes);
+  const [remainingTime, setRemainingTime] = useState([10, 10, 10]);
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
   const calcRandomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
-  const initialIndexes = Array.from({ length: spinColumnNumber }, () =>
-    calcRandomNumber(2, symbols.length - 3)
-  );
+  //   const initialIndexes = Array.from({ length: spinColumnNumber }, () =>
+  //     calcRandomNumber(2, symbols.length - 3)
+  //   );
 
   const spin = (index: number) => {
-    const randomNumber = calcRandomNumber(50, 150);
+    const randomNumber = calcRandomNumber(15, 200);
     const newIntervalId = setInterval(() => {
-      setRemainingTime((prev) => {
-        return prev - 1;
+      setRemainingTime((prevTimes) => {
+        const newTimes = [...prevTimes];
+        newTimes[index] = newTimes[index] - 1;
+        return newTimes;
       });
       setIndexes((prevIndexes) => {
         const newIndexes = [...prevIndexes];
@@ -36,31 +39,63 @@ const Slot = () => {
     });
   };
 
+  const initiliazeIndex = (index: number) => {
+    console.log("get init index:", index, "to be index", initialIndexes[index]);
+    setIndexes((prevIndexes) => {
+      const newIndexes = [...prevIndexes];
+      newIndexes[index] = initialIndexes[index];
+      return newIndexes;
+    });
+  };
+  const initiliazeRemainingTime = (index: number) => {
+    setRemainingTime((prevTimes) => {
+      const newTimes = [...prevTimes];
+      newTimes[index] = 10;
+      return newTimes;
+    });
+  };
+
+  const initialiazeIntervalIds = (index: number) => {
+    clearInterval(intervalIds[index]);
+    setIntervalIds((prevIds) => {
+      const newIds = [...prevIds];
+      newIds[index] = undefined;
+      return newIds;
+    });
+  };
+
   useEffect(() => {
-    if (remainingTime === 0) {
-      setIntervalIds(initialIntervalIds);
-      clearInterval(intervalIds[0]);
-      clearInterval(intervalIds[1]);
-      clearInterval(intervalIds[2]);
-      setRemainingTime(10);
-    } else {
+    if (remainingTime[0] === 0) {
+      initiliazeRemainingTime(0);
+      initialiazeIntervalIds(0);
     }
+    if (remainingTime[1] === 0) {
+      initiliazeRemainingTime(1);
+      initialiazeIntervalIds(1);
+    }
+    if (remainingTime[2] === 0) {
+      initiliazeRemainingTime(2);
+      initialiazeIntervalIds(2);
+    }
+    console.log(remainingTime);
   }, [remainingTime]);
 
   useEffect(() => {
-    if (
-      indexes[0] === symbols.length - 4 ||
-      indexes[1] === symbols.length - 4 ||
-      indexes[2] === symbols.length - 4
-    ) {
-      setIndexes([2, 4, 6]);
+    if (indexes[0] === symbols.length - 1) {
+      initiliazeIndex(0);
+    }
+    if (indexes[1] === symbols.length - 1) {
+      initiliazeIndex(1);
+    }
+    if (indexes[2] === symbols.length - 1) {
+      initiliazeIndex(2);
     }
   }, [indexes]);
 
   const handleSpin = () => {
-    clearInterval(intervalIds[0]);
-    clearInterval(intervalIds[1]);
-    clearInterval(intervalIds[2]);
+    initialiazeIntervalIds(0);
+    initialiazeIntervalIds(1);
+    initialiazeIntervalIds(2);
     Array.from({ length: spinColumnNumber }, (_, i) => spin(i));
   };
 
