@@ -43,7 +43,7 @@ const Slot = () => {
     console.log("get init index:", index, "to be index", initialIndexes[index]);
     setIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
-      newIndexes[index] = initialIndexes[index];
+      newIndexes[index] = 2;
       return newIndexes;
     });
   };
