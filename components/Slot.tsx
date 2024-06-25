@@ -4,19 +4,18 @@ import SpinItem from "./SpinItem";
 
 const Slot = () => {
   const symbols = ["⭐", "🔔", "🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
-  const initialIntervalIds = [undefined, undefined, undefined];
+
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
+  const initialIntervalIds = [undefined, undefined, undefined];
   const initialIndexes = [2, 4, 6];
   const [indexes, setIndexes] = useState(initialIndexes);
-  const [remainingTime, setRemainingTime] = useState([2, 4, 6]);
+  const [remainingTime, setRemainingTime] = useState([2, 6, 8]);
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
+
   const calcRandomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
-  //   const initialIndexes = Array.from({ length: spinColumnNumber }, () =>
-  //     calcRandomNumber(2, symbols.length - 3)
-  //   );
 
   const spin = (index: number) => {
     const randomNumber = calcRandomNumber(15, 200);
@@ -32,25 +31,28 @@ const Slot = () => {
         return newIndexes;
       });
     }, randomNumber);
+
     setIntervalIds((prevIds) => {
       const newIds = [...prevIds];
       newIds[index] = newIntervalId;
       return newIds;
     });
+
+    console.log("for index:,", index, randomNumber);
   };
 
-  const initiliazeIndex = (index: number) => {
-    console.log("get init index:", index, "to be index", initialIndexes[index]);
+  const initializeIndex = (index: number) => {
     setIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
       newIndexes[index] = 2;
       return newIndexes;
     });
   };
-  const initiliazeRemainingTime = (index: number) => {
+  const initializeRemainingTime = (index: number) => {
+    const randomRemainingTime = calcRandomNumber(4, 10);
     setRemainingTime((prevTimes) => {
       const newTimes = [...prevTimes];
-      newTimes[index] = 10;
+      newTimes[index] = randomRemainingTime;
       return newTimes;
     });
   };
@@ -65,30 +67,30 @@ const Slot = () => {
   };
 
   useEffect(() => {
+    console.log(remainingTime);
     if (remainingTime[0] === 0) {
-      initiliazeRemainingTime(0);
+      initializeRemainingTime(0);
       initialiazeIntervalIds(0);
     }
     if (remainingTime[1] === 0) {
-      initiliazeRemainingTime(1);
+      initializeRemainingTime(1);
       initialiazeIntervalIds(1);
     }
     if (remainingTime[2] === 0) {
-      initiliazeRemainingTime(2);
+      initializeRemainingTime(2);
       initialiazeIntervalIds(2);
     }
-    console.log(remainingTime);
   }, [remainingTime]);
 
   useEffect(() => {
     if (indexes[0] === symbols.length - 1) {
-      initiliazeIndex(0);
+      initializeIndex(0);
     }
     if (indexes[1] === symbols.length - 1) {
-      initiliazeIndex(1);
+      initializeIndex(1);
     }
     if (indexes[2] === symbols.length - 1) {
-      initiliazeIndex(2);
+      initializeIndex(2);
     }
   }, [indexes]);
 
@@ -101,17 +103,8 @@ const Slot = () => {
 
   return (
     <>
-      <button className="z-50" onClick={handleSpin}>
-        {" "}
-        Start
-      </button>
-      <input
-        type="select"
-        value={spinColumnNumber}
-        onChange={(e) => setSpinColumnNumber(e.target.value)}
-      />
       <div className="bg-stone-300">
-        <div className=" wrapper relative flex items-center justify-center overflow-hidden m-5 w-[450px] h-[350px] p-5 ">
+        <div className=" wrapper overflow-hidden relative flex items-center justify-center  m-5 w-[450px] h-[350px] p-5 ">
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
               key={i}
@@ -122,6 +115,13 @@ const Slot = () => {
           ))}
         </div>
       </div>
+      <button
+        className=" m-3 py-3 px-6 text-xl bg-red-600  text-white shadow-2xl border-rose-600 border-2 cursor-pointer rounded-lg font-bold active:shadow-inner"
+        onClick={handleSpin}
+      >
+        {" "}
+        SPIN
+      </button>
     </>
   );
 };

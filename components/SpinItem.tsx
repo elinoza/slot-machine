@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import SymbolItem from "./SymbolItem";
 
 type SpinItemProps = {
@@ -10,7 +8,6 @@ type SpinItemProps = {
 
 const SpinItem = ({ symbols, index, active }: SpinItemProps) => {
   const notActive = !active;
-  console.log(notActive);
   const symbolIndexesToShow = [
     index - 3,
     index - 2,
@@ -23,7 +20,7 @@ const SpinItem = ({ symbols, index, active }: SpinItemProps) => {
   return (
     <>
       {" "}
-      <div className="sin-column flex flex-col items-center justify-center bg-white text-7xl  overflow-hidden relative m-3 ">
+      <div className="flex flex-col items-center justify-center bg-white text-7xl  overflow-hidden relative m-3 ">
         {symbolIndexesToShow.map((symbolIndex, i) => (
           <SymbolItem
             key={i}
