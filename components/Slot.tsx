@@ -3,10 +3,10 @@ import React, { useEffect, useState } from "react";
 import SpinItem from "./SpinItem";
 
 const Slot = () => {
-  const symbols = ["⭐", "🔔", "🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
+  const symbols = ["🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIntervalIds = [undefined, undefined, undefined];
-  const initialIndexes = [2, 4, 6];
+  const initialIndexes = [2, 3, 4];
   const [indexes, setIndexes] = useState(initialIndexes);
   const [winnerIndexes, setWinnerIndexes] = useState<(string | null)[]>([
     null,
@@ -46,7 +46,7 @@ const Slot = () => {
   const initializeIndex = (index: number) => {
     setIndexes((prevIndexes) => {
       const newIndexes = [...prevIndexes];
-      newIndexes[index] = 2;
+      newIndexes[index] = 0;
       return newIndexes;
     });
   };
@@ -76,6 +76,7 @@ const Slot = () => {
   };
 
   const handleWinnerIndex = (index: number, winnerSymbol: string) => {
+    console.log("hello", index, winnerSymbol, winnerIndexes);
     setWinnerIndexes((prevWinnerSymbols) => {
       const newWinnerSymbols = [...prevWinnerSymbols];
       newWinnerSymbols[index] = winnerSymbol;
@@ -90,19 +91,15 @@ const Slot = () => {
     });
   };
 
-  const handleRemainingTime = (index: number) => {
-    if (remainingTime[index] === 0) {
-      const winnerIndex = indexes[index];
-      const winnerSymbol = symbols[winnerIndex];
-      handleWinnerIndex(index, winnerSymbol);
-      initializeRemainingTime(index);
-      initialiazeIntervalIds(index);
-    }
-  };
-
   useEffect(() => {
+    const handleRemainingTime = (index: number) => {
+      if (remainingTime[index] === 0) {
+        initializeRemainingTime(index);
+        initialiazeIntervalIds(index);
+      }
+    };
     Array.from({ length: spinColumnNumber }, (_, i) => handleRemainingTime(i));
-  }, [remainingTime]);
+  }, [remainingTime, spinColumnNumber]);
 
   useEffect(() => {
     Array.from({ length: spinColumnNumber }, (_, i) => {
@@ -110,7 +107,7 @@ const Slot = () => {
         initializeIndex(i);
       }
     });
-  }, [indexes]);
+  }, [indexes, spinColumnNumber, symbols.length]);
 
   const handleSpin = () => {
     setWin(false);
@@ -129,10 +126,12 @@ const Slot = () => {
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
               key={i}
+              spinColumnIndex={i}
               symbols={symbols}
               index={indexes[i]}
               active={intervalIds[i]}
               win={win}
+              handleWinnerIndex={handleWinnerIndex}
             />
           ))}
         </div>

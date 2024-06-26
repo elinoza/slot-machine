@@ -6,14 +6,22 @@ type SymbolItemProps = {
   active: boolean;
   win: boolean;
   i: number;
+  length: number;
 };
 
-const SymbolItem = ({ i, symbol, index, active, win }: SymbolItemProps) => {
+const SymbolItem = ({
+  i,
+  symbol,
+  index,
+  active,
+  win,
+  length,
+}: SymbolItemProps) => {
   return (
     <div
       className={clsx(
-        i === 4 && "bg-rose-200",
-        i === 4 && win && "bg-red-500 animate-ping",
+        i === Math.floor(length / 2) && "bg-rose-200",
+        i === Math.floor(length / 2) && win && "bg-red-500 animate-ping",
         " p-5 flex items-center justify-center relative w-[150px] h-[150px]   "
       )}
     >
