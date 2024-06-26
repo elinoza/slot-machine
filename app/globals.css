@@ -45,3 +45,7 @@
     rgba(0, 0, 0, 0) 100%
   );
 }
+
+.but.triggered {
+  transform: translateY(300px);
+}

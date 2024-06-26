@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import clsx from "clsx";
 
 import Confetti from "react-confetti";
 import SpinItem from "./SpinItem";
@@ -18,6 +19,8 @@ const Slot = () => {
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
   const [win, setWin] = useState<boolean>(false);
+  const [trigger, setTrigger] = useState<boolean>(false);
+
   const calcRandomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
   };
@@ -118,10 +121,20 @@ const Slot = () => {
       spin(i);
     });
   };
+  const handleTrigger = () => {
+    setTrigger(true);
+  };
 
   return (
     <>
-      <div className="bg-stone-300">
+      <div className="bg-stone-300 relative ">
+        <button
+          className={clsx(
+            trigger && "triggered",
+            "but absolute cursor-pointer rounded-full w-[30px] h-[30px] bg-red-500 right-[-70px] shadow top-[50%] translate-y-[-50%] bg-circle-gradient before:content-[''] before:absolute before:w-[52px] before:h-6 before:bg-cylindir-gradient   after:content-[''] after:absolute after:w-3 after:h-[100px] after:bg-cylindir-gradient after:translate-y-[13px] after:-z-20 after:left-[50%] after:translate-x-[-50%] before:translate-y-[89px] before:left-[50%] before:translate-x-[calc(-50%-30px)]"
+          )}
+          onClick={handleSpin}
+        />
         <div className=" wrapper overflow-hidden relative flex items-center justify-center  m-5 w-[450px] h-[350px] p-5  ">
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
@@ -136,13 +149,6 @@ const Slot = () => {
           ))}
         </div>
       </div>
-      <button
-        className=" m-3 py-3 px-6 text-xl bg-red-600  text-white shadow-2xl border-rose-600 border-2 cursor-pointer rounded-lg font-bold active:shadow-inner"
-        onClick={handleSpin}
-      >
-        {" "}
-        SPIN
-      </button>
       {win && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />
       )}
