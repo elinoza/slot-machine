@@ -52,6 +52,10 @@
   cursor: pointer;
 }
 
+/* .holder {
+  transition: 0.5s linear;
+} */
+
 .holder.pressed {
   transform: rotateX(180deg);
 }

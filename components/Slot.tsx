@@ -143,7 +143,7 @@ const Slot = () => {
               }}
               className={clsx(
                 pressed && "pressed",
-                "arm absolute w-2 md:w-3  h-14 md:h-28 bg-metal-gradient-vertical shadow-metal rounded-b-sm  bottom-3 md:bottom-6 left-6 md:left-10 before:w-4 before:h-4 before:top-[-0.9rem] before:left-[-0.25rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
+                "arm absolute w-2 md:w-3  h-12 md:h-28 bg-metal-gradient-vertical shadow-metal rounded-b-sm  bottom-3 md:bottom-6 left-6 md:left-10 before:w-4 before:h-4 before:top-[-0.9rem] before:left-[-0.25rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
               )}
             ></button>
           </div>
