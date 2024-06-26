@@ -35,7 +35,7 @@ const SpinItem = ({
   return (
     <>
       {" "}
-      <div className="flex flex-col items-center justify-center bg-white text-7xl  overflow-hidden relative m-3 ">
+      <div className="flex flex-col items-center justify-center bg-white text-4xl md:text-7xl  overflow-hidden relative m-3 ">
         {newSymbolArray.map((symbol: string, i: number) => (
           <SymbolItem
             key={i}

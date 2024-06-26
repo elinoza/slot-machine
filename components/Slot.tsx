@@ -19,7 +19,7 @@ const Slot = () => {
   const [intervalIds, setIntervalIds] =
     useState<(number | NodeJS.Timeout | undefined)[]>(initialIntervalIds);
   const [win, setWin] = useState<boolean>(false);
-  const [trigger, setTrigger] = useState<boolean>(false);
+  const [pressed, setPressed] = useState<boolean>(false);
 
   const calcRandomNumber = (min: number, max: number) => {
     return Math.floor(Math.random() * (max - min) + min);
@@ -55,7 +55,7 @@ const Slot = () => {
     });
   };
   const initializeRemainingTime = (index: number) => {
-    const randomRemainingTime = calcRandomNumber(4, 10);
+    const randomRemainingTime = calcRandomNumber(5, 15);
     setRemainingTime((prevTimes) => {
       const newTimes = [...prevTimes];
       newTimes[index] = randomRemainingTime;
@@ -90,6 +90,9 @@ const Slot = () => {
       if (newWinnerSymbols.every((index) => index) && isAllEqual) {
         setWin(true);
       }
+      if (newWinnerSymbols.every((index) => index !== null)) {
+        setPressed(false);
+      }
       return newWinnerSymbols;
     });
   };
@@ -121,21 +124,31 @@ const Slot = () => {
       spin(i);
     });
   };
-  const handleTrigger = () => {
-    setTrigger(true);
-  };
 
   return (
     <>
-      <div className="bg-stone-300 relative ">
-        <button
-          className={clsx(
-            trigger && "triggered",
-            "but absolute cursor-pointer rounded-full w-[30px] h-[30px] bg-red-500 right-[-70px] shadow top-[50%] translate-y-[-50%] bg-circle-gradient before:content-[''] before:absolute before:w-[52px] before:h-6 before:bg-cylindir-gradient   after:content-[''] after:absolute after:w-3 after:h-[100px] after:bg-cylindir-gradient after:translate-y-[13px] after:-z-20 after:left-[50%] after:translate-x-[-50%] before:translate-y-[89px] before:left-[50%] before:translate-x-[calc(-50%-30px)]"
-          )}
-          onClick={handleSpin}
-        />
-        <div className=" wrapper overflow-hidden relative flex items-center justify-center  m-5 w-[450px] h-[350px] p-5  ">
+      <div className="bg-metal-gradient-vertical shadow-metal relative mr-16 ">
+        <div className="absolute w-16 h-40 -right-16 bottom-16 mechanism  ">
+          {" "}
+          <div
+            className={clsx(
+              pressed && "pressed",
+              "holder absolute w-14  h-8 rounded-r-sm  bg-metal-gradient-horizontal shadow-metal bottom-0"
+            )}
+          >
+            <button
+              onClick={() => {
+                setPressed(true);
+                handleSpin();
+              }}
+              className={clsx(
+                pressed && "pressed",
+                "arm absolute w-3 h-28 bg-metal-gradient-vertical shadow-metal rounded-b-sm bottom-6 left-10   before:w-7 before:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
+              )}
+            ></button>
+          </div>
+        </div>
+        <div className=" wrapper overflow-hidden relative flex items-center justify-center m-5 w-frame-small md:w-frame-medium h-frame-small md:h-frame-medium p-5  ">
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
               key={i}

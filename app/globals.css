@@ -46,6 +46,14 @@
   );
 }
 
-.but.triggered {
-  transform: translateY(300px);
+.arm:before {
+  top: -1rem;
+  left: -0.5rem;
+  content: "";
+  position: absolute;
+  cursor: pointer;
+}
+
+.holder.pressed {
+  transform: rotateX(180deg);
 }
