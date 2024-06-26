@@ -47,8 +47,6 @@
 }
 
 .arm:before {
-  top: -1rem;
-  left: -0.5rem;
   content: "";
   position: absolute;
   cursor: pointer;

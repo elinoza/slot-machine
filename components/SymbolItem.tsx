@@ -22,7 +22,7 @@ const SymbolItem = ({
       className={clsx(
         i === Math.floor(length / 2) && "bg-rose-200",
         i === Math.floor(length / 2) && win && "bg-red-500 animate-ping",
-        " p-5 flex items-center justify-center relative w-symbol-small md:w-symbol-medium h-symbol-small md:h-symbol-medium  "
+        " flex items-center justify-center relative w-symbol-small md:w-symbol-medium h-symbol-small md:h-symbol-medium  "
       )}
     >
       <div className={clsx(active && "active", "absolute z-10 spin-item")}>
