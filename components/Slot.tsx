@@ -76,7 +76,6 @@ const Slot = () => {
   };
 
   const handleWinnerIndex = (index: number, winnerSymbol: string) => {
-    console.log("hello", index, winnerSymbol, winnerIndexes);
     setWinnerIndexes((prevWinnerSymbols) => {
       const newWinnerSymbols = [...prevWinnerSymbols];
       newWinnerSymbols[index] = winnerSymbol;
