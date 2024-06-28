@@ -26,7 +26,6 @@ const Slot = () => {
   };
 
   const spin = (index: number) => {
-    // const randomNumber = calcRandomNumber(15, 200);
     const newIntervalId = setInterval(() => {
       setRemainingTime((prevTimes) => {
         const newTimes = [...prevTimes];
@@ -54,6 +53,7 @@ const Slot = () => {
       return newIndexes;
     });
   };
+
   const initializeRemainingTime = (index: number) => {
     const randomRemainingTime = calcRandomNumber(5, 15);
     setRemainingTime((prevTimes) => {
@@ -62,6 +62,7 @@ const Slot = () => {
       return newTimes;
     });
   };
+
   const initializeWinnerIndexes = (index: number) => {
     setWinnerIndexes((prevWinnerIndexes) => {
       const newWinnerIndex = [...prevWinnerIndexes];
@@ -86,12 +87,10 @@ const Slot = () => {
       const isAllEqual = newWinnerSymbols.every(
         (index) => index === newWinnerSymbols[0]
       );
-
       if (newWinnerSymbols.every((index) => index) && isAllEqual) {
         setWin(true);
       }
       if (newWinnerSymbols.every((index) => index !== null)) {
-        setPressed(false);
       }
       return newWinnerSymbols;
     });
@@ -123,32 +122,35 @@ const Slot = () => {
       initializeWinnerIndexes(i);
       spin(i);
     });
+    setTimeout(() => {
+      setPressed(false);
+    }, 1002);
   };
 
   return (
     <>
-      <div className="bg-metal-gradient-vertical shadow-metal relative mr-16 ">
-        <div className="absolute w-10 h-20 -right-10 md:w-16 md:h-40 md:-right-16 bottom-16 mechanism  ">
+      <div className="absolute w-10 h-20 -right-10 md:w-16 md:h-40 md:-right-16 bottom-16 mechanism  ">
+        {" "}
+        <div
+          className={clsx(
+            pressed && "pressed",
+            "holder absolute w-6 h-8 md:w-10 md:h-12 rounded-r-sm  bg-metal-gradient-horizontal shadow-metal bottom-0"
+          )}
+        ></div>
+        <button
+          onClick={() => {
+            setPressed(true);
+            handleSpin();
+          }}
+          className={clsx(
+            pressed && "pressed",
+            "arm absolute w-2 md:w-3  h-12 md:h-28 bg-metal-gradient-vertical shadow-metal rounded-b-sm  bottom-7 md:bottom-10 left-3 md:left-5 before:w-5 before:h-5 before:top-[-1.1rem] before:left-[-0.35rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
+          )}
+        ></button>
+      </div>
+      <div className=" bg-black shadow-metal relative mr-16 w-frame-small md:w-frame-medium h-frame-small md:h-frame-medium ">
+        <div className=" wrapper relative flex items-center justify-center w-full h-full  ">
           {" "}
-          <div
-            className={clsx(
-              pressed && "pressed",
-              "holder absolute w-8 h-4 md:w-14 md:h-8 rounded-r-sm  bg-metal-gradient-horizontal shadow-metal bottom-0"
-            )}
-          >
-            <button
-              onClick={() => {
-                setPressed(true);
-                handleSpin();
-              }}
-              className={clsx(
-                pressed && "pressed",
-                "arm absolute w-2 md:w-3  h-12 md:h-28 bg-metal-gradient-vertical shadow-metal rounded-b-sm  bottom-3 md:bottom-6 left-6 md:left-10 before:w-4 before:h-4 before:top-[-0.9rem] before:left-[-0.25rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
-              )}
-            ></button>
-          </div>
-        </div>
-        <div className=" wrapper overflow-hidden relative flex items-center justify-center m-5 w-frame-small md:w-frame-medium h-frame-small md:h-frame-medium p-5  ">
           {Array.from({ length: spinColumnNumber }, (_, i) => (
             <SpinItem
               key={i}
@@ -160,7 +162,7 @@ const Slot = () => {
               handleWinnerIndex={handleWinnerIndex}
             />
           ))}
-        </div>
+        </div>{" "}
       </div>
       {win && (
         <Confetti width={window.innerWidth} height={window.innerHeight} />

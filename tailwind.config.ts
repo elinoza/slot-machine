@@ -9,16 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       width: {
-        "symbol-small": "80px",
-        "symbol-medium": "150px",
-        "frame-small": "240px",
-        "frame-medium": "450px",
+        "symbol-small": "120px",
+        "symbol-medium": "190px",
+        "frame-small": "300px",
+        "frame-medium": "500px",
       },
       height: {
-        "symbol-small": "80px",
-        "symbol-medium": "150px",
+        "symbol-small": "70px",
+        "symbol-medium": "120px",
         "frame-small": "200px",
-        "frame-medium": "350px",
+        "frame-medium": "300px",
       },
       boxShadow: {
         metal:
