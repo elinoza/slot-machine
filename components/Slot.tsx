@@ -124,13 +124,13 @@ const Slot = () => {
     });
     setTimeout(() => {
       setPressed(false);
-    }, 1002);
+    }, 400);
   };
 
   return (
     <>
       <div className="shadow-metal bg-metal-gradient-horizontal relative led mr-16 ">
-        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center p-2 justify-end rounded-t-full bg-red-700 h-36 left-0 right-0  text-stone-200 md:text-4xl text-2xl border-[5px] ">
+        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center p-2 justify-end rounded-t-full bg-red-700 h-36 left-0 right-0  text-stone-200 md:text-4xl text-2xl border-t-[5px] ">
           {" "}
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}

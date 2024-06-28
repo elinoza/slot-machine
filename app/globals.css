@@ -23,19 +23,6 @@
   right: 0px;
   left: 0px;
 }
-
-.header::after {
-  overflow: hidden;
-  content: "";
-  position: absolute;
-  width: 40px;
-  height: 60px;
-  z-index: 50;
-  position: absolute;
-  top: 60px;
-  left: 50%;
-}
-
 .lamp-wrapper {
   background-image: linear-gradient(180deg, #e37466, #871d1d, #db6323);
   box-shadow: inset 0 10px 10px rgb(249, 165, 10),
@@ -52,7 +39,6 @@ span:has(> span.lamps)::before {
   right: 0px;
   left: 0px;
 }
-
 .lamps {
   animation: neon 0.4s linear infinite;
 }
@@ -66,21 +52,11 @@ span:has(> span.lamps)::before {
       inset #ff5858 0 -1px 9px, rgba(255, 36, 36, 0.75) 0 2px 12px;
   }
 }
-
 .wrapper {
   overflow: hidden;
   border-radius: 20px;
   background-image: linear-gradient(180deg, #e0e0e0, #ffffff, #e0e0e0);
 }
-
-@keyframes slidein {
-  from {
-  }
-  to {
-    transform: translateY(350px);
-  }
-}
-
 .wrapper::before {
   overflow: hidden;
   content: "";
@@ -98,21 +74,23 @@ span:has(> span.lamps)::before {
   right: 0px;
   left: 0px;
 }
-
 .arm:before {
   content: "";
   position: absolute;
   cursor: pointer;
 }
 .arm.pressed:before {
-  animation: handMove 0.5s ease-in;
+  animation: handMove 0.3s ease-in;
 }
 .arm.pressed {
-  animation: armMove 0.5s ease-in;
+  animation: armMove 0.3s ease-in;
 }
 
 .holder.pressed {
-  animation: holderSpin 0.5s ease-in;
+  animation: holderSpin 0.3s ease-in;
+}
+.holder {
+  transform-origin: left left;
 }
 @keyframes holderSpin {
   0%,
@@ -122,7 +100,6 @@ span:has(> span.lamps)::before {
     box-shadow: none;
   }
 }
-
 @keyframes armMove {
   0%,
   100% {
@@ -132,7 +109,6 @@ span:has(> span.lamps)::before {
     height: 2px;
   }
 }
-
 @keyframes handMove {
   0%,
   100% {
@@ -142,22 +118,10 @@ span:has(> span.lamps)::before {
     transform: translateY(15px);
   }
 }
-
-.holder {
-  transform-origin: left left;
-}
-
-/* @keyframes perspective {
+@keyframes slidein {
   from {
   }
   to {
-    transform: perspective(1000px) rotatex(180deg);
+    transform: translateY(350px);
   }
-} */
-
-/* .holder {
-  transition: 0.5s linear;
-} */
-
-.holder.pressed {
 }
