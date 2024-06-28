@@ -2,14 +2,75 @@
 @tailwind components;
 @tailwind utilities;
 
+.led {
+  box-shadow: inset 0 10px 10px rgb(249, 165, 10),
+    inset 0 -10px 10px rgb(249, 165, 10);
+}
 .spin-item.active {
   animation: slidein 0.17s infinite linear;
+}
+.header::before {
+  overflow: hidden;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 50;
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+.header::after {
+  overflow: hidden;
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 60px;
+  z-index: 50;
+  position: absolute;
+  top: 60px;
+  left: 50%;
+}
+
+.lamp-wrapper {
+  background-image: linear-gradient(180deg, #e37466, #871d1d, #db6323);
+  box-shadow: inset 0 10px 10px rgb(249, 165, 10),
+    inset 0 -10px 10px rgb(249, 165, 10);
+}
+span:has(> span.lamps)::before {
+  overflow: hidden;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+}
+
+.lamps {
+  animation: neon 0.4s linear infinite;
+}
+@keyframes neon {
+  from {
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px,
+      rgba(255, 0, 0, 0.5) 0 2px 12px;
+  }
+  to {
+    box-shadow: rgba(255, 148, 148, 0.2) 0 -1px 7px 1px,
+      inset #ff5858 0 -1px 9px, rgba(255, 36, 36, 0.75) 0 2px 12px;
+  }
 }
 
 .wrapper {
   overflow: hidden;
-  background: linear-gradient(0deg, #a9a9a9, #f5f5f5, #a9a9a9);
-  border-radius: 90px;
+  border-radius: 20px;
+  background-image: linear-gradient(180deg, #e0e0e0, #ffffff, #e0e0e0);
 }
 
 @keyframes slidein {
@@ -26,17 +87,16 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 99;
-  box-shadow: inset 0 20px 10px rgba(0, 0, 0, 0.9),
-    /* Alt gölge */ inset 0 -20px 10px rgba(0, 0, 0, 0.9); /* Üst gölge */
-  border-radius: 90px;
+  z-index: 40;
+  box-shadow: inset 0 10px 10px rgba(0, 0, 0, 1),
+    inset 0 -10px 10px rgba(0, 0, 0, 1);
+  border-radius: 20px;
   padding: 0px;
   margin: 0px;
   position: absolute;
   top: 0px;
   right: 0px;
   left: 0px;
-  z-index: 90;
 }
 
 .arm:before {

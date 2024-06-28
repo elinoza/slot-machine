@@ -13,7 +13,7 @@ const SymbolItem = ({ i, symbol, active, win, length }: SymbolItemProps) => {
     <div
       className={clsx(
         i === Math.floor(length / 2) && win && "bg-red-500 animate-ping",
-        "flex items-center justify-center relative w-symbol-small md:w-symbol-medium h-symbol-small md:h-symbol-medium  "
+        "flex items-center justify-center relative w-full h-symbol-small md:h-symbol-medium  "
       )}
     >
       <div className={clsx(active && "active", " absolute z-10 spin-item")}>

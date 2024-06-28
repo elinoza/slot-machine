@@ -11,8 +11,8 @@ const config: Config = {
       width: {
         "symbol-small": "120px",
         "symbol-medium": "190px",
-        "frame-small": "300px",
-        "frame-medium": "500px",
+        "frame-small": "250px",
+        "frame-medium": "370px",
       },
       height: {
         "symbol-small": "70px",
@@ -28,9 +28,17 @@ const config: Config = {
         "circle-gradient":
           "radial-gradient(circle at 10px 20px, #ff0000, #363636)",
         "metal-gradient-horizontal":
-          "linear-gradient(0deg, #a9a9a9, #f5f5f5, #a9a9a9)",
+          "linear-gradient(0deg, #a9a9a9,#ffffff, #a9a9a9)",
         "metal-gradient-vertical":
           "linear-gradient(90deg, #a9a9a9, #f5f5f5, #a9a9a9)",
+        "body-gradient-horizontal":
+          "linear-gradient(0deg, #dfdcdc,#ffffff, #dfdcdc)",
+        "normal-metal": "linear-gradient(90deg, #a9a9a9, #f5f5f5, #a9a9a9);",
+      },
+
+      borderColor: {
+        "metal-gradient-horizontal":
+          "linear-gradient(0deg, #a9a9a9, #f5f5f5, #a9a9a9)",
       },
     },
   },
