@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import SpinItem from "./SpinItem";
 
 const Slot = () => {
-  const symbols = ["🍒", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
+  const symbols = ["❤️️", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIntervalIds = [undefined, undefined, undefined];
   const initialIndexes = [2, 3, 4];
@@ -130,13 +130,13 @@ const Slot = () => {
   return (
     <>
       <div className="shadow-metal bg-gold-gradient-horizontal relative led mr-16 ">
-        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-2 bg-red-700 h-36 left-0 right-0   md:text-4xl text-2xl  ">
+        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-4 bg-red-700 h-36 left-0 right-0   md:text-4xl text-2xl  ">
           {" "}
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}
-            <span className=" absolute overflow-hidden flex flex-wrap items-center justify-between w-[50%] h-[10%] gap-2 p-4">
+            <span className=" absolute overflow-hidden flex flex-wrap items-center justify-between w-[50%] h-full gap-2 p-1">
               {" "}
-              {Array.from({ length: 30 }, (_, i) => (
+              {Array.from({ length: 20 }, (_, i) => (
                 <span
                   key={i}
                   className=" bg-red-400 w-1 h-1 rounded-full lamps"
@@ -147,18 +147,6 @@ const Slot = () => {
           <h1 className="bg-gradient-to-r drop-shadow-md from-[#B8860B] via-[#FFD700] to-[#B8860B] text-transparent bg-clip-text">
             LUCKY SPINS
           </h1>
-          <div className="h-60 w-full flex items-center justify-center relative p-2">
-            {" "}
-            <span className=" absolute overflow-hidden  flex flex-wrap items-center justify-between w-[90%] h-[50%] gap-2 p-4">
-              {" "}
-              {Array.from({ length: 40 }, (_, i) => (
-                <span
-                  key={i}
-                  className=" bg-red-400 w-1 h-1 rounded-full lamps"
-                ></span>
-              ))}
-            </span>{" "}
-          </div>
         </span>
         <div className="flex items-center justify-around ">
           <span className="flex flex-col items-center  justify-between flex-wrap gap-3 p-2 ">
@@ -198,7 +186,7 @@ const Slot = () => {
           {" "}
           <span className=" absolute overflow-hidden  bottom-0 lamp-wrapper flex flex-wrap items-center justify-between w-[100%] h-[85%] gap-2 p-5">
             {" "}
-            {Array.from({ length: 56 }, (_, i) => (
+            {Array.from({ length: 40 }, (_, i) => (
               <span
                 key={i}
                 className=" bg-red-400 w-1 h-1 rounded-full lamps"

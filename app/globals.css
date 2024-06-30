@@ -76,10 +76,10 @@ span:has(> span.lamps)::before {
   cursor: pointer;
 }
 .arm.pressed {
-  animation: armMove 0.9s ease-out;
+  animation: armMove 0.6s ease-out;
 }
 .holder.pressed {
-  animation: holderSpin 0.9s ease-out;
+  animation: holderSpin 0.6s ease-out;
 }
 @keyframes holderSpin {
   0%,
