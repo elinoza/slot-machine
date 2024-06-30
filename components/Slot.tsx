@@ -129,8 +129,8 @@ const Slot = () => {
 
   return (
     <>
-      <div className="shadow-metal bg-metal-gradient-horizontal relative led mr-16 ">
-        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-2 bg-red-700 h-36 left-0 right-0  text-stone-200 md:text-4xl text-2xl  ">
+      <div className="shadow-metal bg-gold-gradient-horizontal relative led mr-16 ">
+        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-2 bg-red-700 h-36 left-0 right-0   md:text-4xl text-2xl  ">
           {" "}
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}
@@ -144,7 +144,9 @@ const Slot = () => {
               ))}
             </span>{" "}
           </div>
-          <span>LUCKY SPINS</span>
+          <h1 className="bg-gradient-to-r drop-shadow-md from-[#B8860B] via-[#FFD700] to-[#B8860B] text-transparent bg-clip-text">
+            LUCKY SPINS
+          </h1>
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}
             <span className=" absolute overflow-hidden  flex flex-wrap items-center justify-between w-[90%] h-[50%] gap-2 p-4">
@@ -167,8 +169,8 @@ const Slot = () => {
               ></span>
             ))}
           </span>{" "}
-          <div className="wrapper mt-6  overflow-hidden before:border-l-[12px] before:border-r-[12px] before:border-metal-gradient-horizontal relative  w-frame-small  md:w-frame-medium h-frame-small md:h-frame-medium ">
-            <span className="clip flex items-center justify-center">
+          <div className="wrapper rounded-3xl overflow-hidden mt-6  before:border-l-[12px] before:border-r-[12px] relative  w-frame-small  md:w-frame-medium h-frame-small md:h-frame-medium ">
+            <span className="absolute w-[95%] h-[90%] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-body-gradient-horizontal overflow-hidden flex items-center justify-center shadow-[ 0 60px 60px rgba(0, 0, 0, 1), 0 -60px 60px rgba(0, 0, 0, 1)]">
               {Array.from({ length: spinColumnNumber }, (_, i) => (
                 <SpinItem
                   key={i}
@@ -210,7 +212,7 @@ const Slot = () => {
           <div
             className={clsx(
               pressed && "pressed",
-              "holder absolute w-6 h-12 md:w-10 md:h-12 rounded-r-sm  bg-metal-gradient-horizontal shadow-metal bottom-0"
+              "holder bg-metal-gradient-horizontal absolute w-6 h-12 md:w-10 md:h-12 rounded-r-sm  shadow-metal bottom-0"
             )}
           ></div>
           <button

@@ -52,18 +52,15 @@ span:has(> span.lamps)::before {
       inset #ff5858 0 -1px 9px, rgba(255, 36, 36, 0.75) 0 2px 12px;
   }
 }
-.wrapper {
-  border-radius: 20px;
-  background-image: linear-gradient(180deg, #e0e0e0, #ffffff, #e0e0e0);
-}
+
 .wrapper::before {
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
-  z-index: 40;
-  box-shadow: inset 0 20px 13px rgba(0, 0, 0, 0.7),
-    inset 0 -20px 13px rgba(0, 0, 0, 0.7);
+  z-index: 99;
+  box-shadow: inset 0 20px 13px rgba(0, 0, 0, 0.8),
+    inset 0 -20px 13px rgba(0, 0, 0, 0.8);
   border-radius: 20px;
   padding: 0px;
   margin: 0px;
@@ -72,22 +69,7 @@ span:has(> span.lamps)::before {
   right: 0px;
   left: 0px;
 }
-.clip {
-  background: linear-gradient(0deg, #a9a9a9, #ffffff, #a9a9a9);
-  overflow: hidden;
-  content: "";
-  position: absolute;
-  width: 100%;
-  height: 135%;
-  border-radius: 135px;
-  padding: 0px;
-  margin: 0px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8), 0 -20px 20px rgba(0, 0, 0, 0.8);
-}
+
 .arm:before {
   content: "";
   position: absolute;
@@ -124,3 +106,28 @@ span:has(> span.lamps)::before {
     transform: translateY(350px);
   }
 }
+
+.slidingAbove {
+  transform: rotateX(60deg);
+}
+
+.slidingBelow {
+  transform: rotateX(60deg);
+}
+.clip,
+.spinItem,
+.symbol-item {
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
+}
+/* .gradient-text {
+  background-color: red;
+  background-image: linear-gradient(45deg, #f3ec78, #af4261);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  background-clip: text;
+} */
