@@ -9,7 +9,7 @@
 .spin-item.active {
   animation: slidein 0.17s infinite linear;
 }
-.header::before {
+/* .header::before {
   overflow: hidden;
   content: "";
   position: absolute;
@@ -22,7 +22,7 @@
   top: 0px;
   right: 0px;
   left: 0px;
-}
+} */
 .lamp-wrapper {
   background-image: linear-gradient(180deg, #e37466, #871d1d, #db6323);
   box-shadow: inset 0 10px 10px rgb(249, 165, 10),
@@ -40,7 +40,7 @@ span:has(> span.lamps)::before {
   left: 0px;
 }
 .lamps {
-  animation: neon 0.4s linear infinite;
+  animation: neon 0.6s ease-in-out infinite;
 }
 @keyframes neon {
   from {
@@ -53,19 +53,17 @@ span:has(> span.lamps)::before {
   }
 }
 .wrapper {
-  overflow: hidden;
   border-radius: 20px;
   background-image: linear-gradient(180deg, #e0e0e0, #ffffff, #e0e0e0);
 }
 .wrapper::before {
-  overflow: hidden;
   content: "";
   position: absolute;
   width: 100%;
   height: 100%;
   z-index: 40;
-  box-shadow: inset 0 10px 10px rgba(0, 0, 0, 1),
-    inset 0 -10px 10px rgba(0, 0, 0, 1);
+  box-shadow: inset 0 20px 13px rgba(0, 0, 0, 0.7),
+    inset 0 -20px 13px rgba(0, 0, 0, 0.7);
   border-radius: 20px;
   padding: 0px;
   margin: 0px;
@@ -74,23 +72,32 @@ span:has(> span.lamps)::before {
   right: 0px;
   left: 0px;
 }
+.clip {
+  background: linear-gradient(0deg, #a9a9a9, #ffffff, #a9a9a9);
+  overflow: hidden;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 135%;
+  border-radius: 135px;
+  padding: 0px;
+  margin: 0px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 20px 20px rgba(0, 0, 0, 0.8), 0 -20px 20px rgba(0, 0, 0, 0.8);
+}
 .arm:before {
   content: "";
   position: absolute;
   cursor: pointer;
 }
-.arm.pressed:before {
-  animation: handMove 0.3s ease-in;
-}
 .arm.pressed {
-  animation: armMove 0.3s ease-in;
+  animation: armMove 0.9s ease-out;
 }
-
 .holder.pressed {
-  animation: holderSpin 0.3s ease-in;
-}
-.holder {
-  transform-origin: left left;
+  animation: holderSpin 0.9s ease-out;
 }
 @keyframes holderSpin {
   0%,
@@ -103,21 +110,13 @@ span:has(> span.lamps)::before {
 @keyframes armMove {
   0%,
   100% {
-    height: 3rem;
+    height: 9rem;
   }
   50% {
-    height: 2px;
+    height: 0px;
   }
 }
-@keyframes handMove {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(15px);
-  }
-}
+
 @keyframes slidein {
   from {
   }

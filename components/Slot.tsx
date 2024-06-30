@@ -124,13 +124,13 @@ const Slot = () => {
     });
     setTimeout(() => {
       setPressed(false);
-    }, 400);
+    }, 1000);
   };
 
   return (
     <>
       <div className="shadow-metal bg-metal-gradient-horizontal relative led mr-16 ">
-        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center p-2 justify-end rounded-t-full bg-red-700 h-36 left-0 right-0  text-stone-200 md:text-4xl text-2xl border-t-[5px] ">
+        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-2 bg-red-700 h-36 left-0 right-0  text-stone-200 md:text-4xl text-2xl  ">
           {" "}
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}
@@ -167,18 +167,20 @@ const Slot = () => {
               ></span>
             ))}
           </span>{" "}
-          <div className="wrapper mt-6  overflow-hidden before:border-l-[12px] before:border-r-[12px] before:border-metal-gradient-horizontal relative flex items-center justify-center w-frame-small  md:w-frame-medium h-frame-small md:h-frame-medium ">
-            {Array.from({ length: spinColumnNumber }, (_, i) => (
-              <SpinItem
-                key={i}
-                spinColumnIndex={i}
-                symbols={symbols}
-                index={indexes[i]}
-                active={intervalIds[i]}
-                win={win}
-                handleWinnerIndex={handleWinnerIndex}
-              />
-            ))}
+          <div className="wrapper mt-6  overflow-hidden before:border-l-[12px] before:border-r-[12px] before:border-metal-gradient-horizontal relative  w-frame-small  md:w-frame-medium h-frame-small md:h-frame-medium ">
+            <span className="clip flex items-center justify-center">
+              {Array.from({ length: spinColumnNumber }, (_, i) => (
+                <SpinItem
+                  key={i}
+                  spinColumnIndex={i}
+                  symbols={symbols}
+                  index={indexes[i]}
+                  active={intervalIds[i]}
+                  win={win}
+                  handleWinnerIndex={handleWinnerIndex}
+                />
+              ))}
+            </span>
           </div>
           <span className="flex flex-col items-center  justify-between flex-wrap gap-3 p-2 ">
             {Array.from({ length: 4 }, (_, i) => (
@@ -190,11 +192,11 @@ const Slot = () => {
           </span>{" "}
         </div>
 
-        <div className="h-52 w-full flex items-center justify-center relative p-2">
+        <div className="h-52 w-full flex items-center justify-center relative ">
           {" "}
-          <span className=" absolute overflow-hidden  lamp-wrapper flex flex-wrap items-center justify-between w-[90%] h-[70%] gap-2 p-5">
+          <span className=" absolute overflow-hidden  bottom-0 lamp-wrapper flex flex-wrap items-center justify-between w-[100%] h-[85%] gap-2 p-5">
             {" "}
-            {Array.from({ length: 76 }, (_, i) => (
+            {Array.from({ length: 56 }, (_, i) => (
               <span
                 key={i}
                 className=" bg-red-400 w-1 h-1 rounded-full lamps"
@@ -218,7 +220,7 @@ const Slot = () => {
             }}
             className={clsx(
               pressed && "pressed",
-              "arm absolute w-2 md:w-3  h-28 md:h-56 bg-metal-gradient-vertical shadow-metal rounded-b-sm  bottom-7 md:bottom-10 left-3 md:left-5 before:w-5 before:h-5 before:top-[-1.1rem] before:left-[-0.35rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
+              "arm absolute w-2 md:w-3  h-36 bg-metal-gradient-vertical  shadow-metal rounded-b-sm  bottom-7 md:bottom-10 left-3 md:left-5 before:w-5 before:h-5 before:top-[-1.1rem] before:left-[-0.35rem] before:md:top-[-1rem] before:md:left-[-0.5rem] before:md:w-7 before:md:h-7 before:bg-circle-gradient before:shadow:metal before:rounded-full "
             )}
           ></button>
         </div>

@@ -12,13 +12,13 @@ const config: Config = {
         "symbol-small": "120px",
         "symbol-medium": "190px",
         "frame-small": "250px",
-        "frame-medium": "370px",
+        "frame-medium": "330px",
       },
       height: {
         "symbol-small": "70px",
-        "symbol-medium": "120px",
+        "symbol-medium": "100px",
         "frame-small": "200px",
-        "frame-medium": "300px",
+        "frame-medium": "230px",
       },
       boxShadow: {
         metal:
