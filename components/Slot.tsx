@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import SpinItem from "./SpinItem";
 
 const Slot = () => {
-  const symbols = ["❤️️", "🍋", "🍊", "🍉", "🍇", "⭐", "🔔"];
+  const symbols: string[] = ["❤️️", "👨‍👩‍👧‍👦", "🎓", "💵", "💪", "🍀", "🙏"];
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIntervalIds = [undefined, undefined, undefined];
   const initialIndexes = [2, 3, 4];
@@ -107,6 +107,11 @@ const Slot = () => {
   }, [remainingTime, spinColumnNumber]);
 
   useEffect(() => {
+    if (symbols.length % 2 === 0) {
+      console.error(
+        "Please provide one more symbol or delete one of the symbols.Symbols array must be an odd number"
+      );
+    }
     Array.from({ length: spinColumnNumber }, (_, i) => {
       if (indexes[i] === symbols.length - 1) {
         initializeIndex(i);
@@ -158,7 +163,7 @@ const Slot = () => {
             ))}
           </span>{" "}
           <div className="wrapper rounded-3xl overflow-hidden mt-6  before:border-l-[12px] before:border-r-[12px] relative  w-frame-small  md:w-frame-medium h-frame-small md:h-frame-medium ">
-            <span className="absolute w-[95%] h-[90%] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-3xl bg-body-gradient-horizontal overflow-hidden flex items-center justify-center shadow-[ 0 60px 60px rgba(0, 0, 0, 1), 0 -60px 60px rgba(0, 0, 0, 1)]">
+            <span className="absolute w-[90%] h-[90%] top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 rounded-2xl bg-body-gradient-horizontal overflow-hidden flex items-center justify-center shadow-[ 0 60px 60px rgba(0, 0, 0, 1), 0 -60px 60px rgba(0, 0, 0, 1)]">
               {Array.from({ length: spinColumnNumber }, (_, i) => (
                 <SpinItem
                   key={i}

@@ -10,7 +10,7 @@ const rye = Rye({
 
 export const metadata: Metadata = {
   title: "Slot Machine",
-  description: "Spin for a motivational quote win!",
+  description: "Give it a spin and find your luck!",
 };
 
 export default function RootLayout({

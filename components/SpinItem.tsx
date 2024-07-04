@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import SymbolItem from "./SymbolItem";
 
 type SpinItemProps = {
-  symbols: any;
+  symbols: string[];
   index: number;
   active: number | NodeJS.Timeout | undefined;
   win: boolean;
