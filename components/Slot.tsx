@@ -5,7 +5,7 @@ import Confetti from "react-confetti";
 import SpinItem from "./SpinItem";
 
 const Slot = () => {
-  const symbols: string[] = ["❤️️", "👨‍👩‍👧‍👦", "🎓", "💵", "💪", "🍀", "🙏"];
+  const symbols: string[] = ["❤️️", "🎓", "💵", "💪", "🍀", "🤝", "💼"];
   const [spinColumnNumber, setSpinColumnNumber] = useState<any>(3);
   const initialIntervalIds = [undefined, undefined, undefined];
   const initialIndexes = [2, 3, 4];
