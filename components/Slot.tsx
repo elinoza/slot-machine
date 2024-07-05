@@ -134,8 +134,8 @@ const Slot = () => {
 
   return (
     <>
-      <div className="shadow-metal bg-gold-gradient-horizontal relative led mr-16 ">
-        <span className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-4 bg-red-700 h-36 left-0 right-0   md:text-4xl text-2xl  ">
+      <div className="shadow-metal bg-gold-gradient-horizontal relative led mr-10 md:mr-16 ">
+        <div className="header overflow-hidden led absolute -top-36 w-full drop-shadow-md flex flex-col items-center justify-end rounded-t-full p-4 bg-red-700 h-36 left-0 right-0  md:text-4xl text-2xl  ">
           {" "}
           <div className="h-60 w-full flex items-center justify-center relative p-2">
             {" "}
@@ -152,7 +152,7 @@ const Slot = () => {
           <h1 className="bg-gradient-to-r drop-shadow-md from-[#B8860B] via-[#FFD700] to-[#B8860B] text-transparent bg-clip-text">
             LUCKY SPINS
           </h1>
-        </span>
+        </div>
         <div className="flex items-center justify-around ">
           <span className="flex flex-col items-center  justify-between flex-wrap gap-3 p-2 ">
             {Array.from({ length: 4 }, (_, i) => (
@@ -200,7 +200,7 @@ const Slot = () => {
           </span>{" "}
         </div>
 
-        <div className="absolute w-10 h-20 -right-10 md:w-16 md:h-40 md:-right-16 bottom-52 mechanism  ">
+        <div className="mechanism absolute w-10 h-20 -right-10 md:w-16 md:h-40 md:-right-16 bottom-52">
           {" "}
           <div
             className={clsx(

@@ -21,7 +21,7 @@ const SymbolItem = ({ i, symbol, active, win, length }: SymbolItemProps) => {
       <div
         className={clsx(
           active && "active",
-          " absolute z-10 w-full h-full spin-item flex items-center text-md justify-center"
+          " absolute z-10  spin-item flex items-center text-md justify-center"
         )}
       >
         {symbol}
