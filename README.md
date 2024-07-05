@@ -2,5 +2,5 @@
 
 A simple slot machine game built with Next.js, Tailwind CSS, and TypeScript.
 
-<img width="681" alt="Ekran Resmi 2024-06-27 01 05 26" src="https://github.com/elinoza/slot-machine/assets/72200043/70a31276-d8dc-4262-87f3-6fd03364c9db">
-<img width="681" alt="Ekran Resmi 2024-06-27 01 05 40" src="https://github.com/elinoza/slot-machine/assets/72200043/6b5841c5-7db9-4af7-ba6e-2f2acad9061a">
+![Ekran Resmi 2024-07-04 12 06 49](https://github.com/elinoza/slot-machine/assets/72200043/03f69337-8178-4e2f-84a1-fb3d37cbdd17)
+![Ekran Resmi 2024-07-04 12 07 56](https://github.com/elinoza/slot-machine/assets/72200043/2a0efb93-150e-42b4-89ac-2d774be37e2e)
